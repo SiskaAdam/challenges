@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE01B753297975C90093E294 /* backend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DE01B751297975C90093E294 /* backend.cpp */; };
+		DE01B757297976590093E294 /* openai_adapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DE01B755297976590093E294 /* openai_adapter.cpp */; };
 		DEDA69B92979547F00767336 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DEDA69B82979547F00767336 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +25,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DE01B751297975C90093E294 /* backend.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = backend.cpp; sourceTree = "<group>"; };
+		DE01B752297975C90093E294 /* backend.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = backend.hpp; sourceTree = "<group>"; };
+		DE01B755297976590093E294 /* openai_adapter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = openai_adapter.cpp; sourceTree = "<group>"; };
+		DE01B756297976590093E294 /* openai_adapter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = openai_adapter.hpp; sourceTree = "<group>"; };
 		DEDA69B52979547F00767336 /* OpenAIChallenge */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpenAIChallenge; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEDA69B82979547F00767336 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				DEDA69B82979547F00767336 /* main.cpp */,
+				DE01B751297975C90093E294 /* backend.cpp */,
+				DE01B752297975C90093E294 /* backend.hpp */,
+				DE01B755297976590093E294 /* openai_adapter.cpp */,
+				DE01B756297976590093E294 /* openai_adapter.hpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -118,6 +128,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE01B753297975C90093E294 /* backend.cpp in Sources */,
+				DE01B757297976590093E294 /* openai_adapter.cpp in Sources */,
 				DEDA69B92979547F00767336 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
