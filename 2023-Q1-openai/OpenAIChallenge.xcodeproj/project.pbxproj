@@ -41,7 +41,7 @@
 		DEDA69AC2979547F00767336 = {
 			isa = PBXGroup;
 			children = (
-				DEDA69B72979547F00767336 /* OpenAIChallenge */,
+				DEDA69B72979547F00767336 /* src */,
 				DEDA69B62979547F00767336 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,12 +54,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DEDA69B72979547F00767336 /* OpenAIChallenge */ = {
+		DEDA69B72979547F00767336 /* src */ = {
 			isa = PBXGroup;
 			children = (
 				DEDA69B82979547F00767336 /* main.cpp */,
 			);
-			path = OpenAIChallenge;
+			path = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
