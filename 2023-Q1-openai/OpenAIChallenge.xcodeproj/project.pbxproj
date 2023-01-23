@@ -10,6 +10,7 @@
 		DE01B753297975C90093E294 /* backend.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DE01B751297975C90093E294 /* backend.cpp */; };
 		DE01B757297976590093E294 /* openai_adapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DE01B755297976590093E294 /* openai_adapter.cpp */; };
 		DEDA69B92979547F00767336 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DEDA69B82979547F00767336 /* main.cpp */; };
+		DEDBA675297F52100045A691 /* libcurl.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DEDBA674297F52100045A691 /* libcurl.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,7 @@
 		DE01B756297976590093E294 /* openai_adapter.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = openai_adapter.hpp; sourceTree = "<group>"; };
 		DEDA69B52979547F00767336 /* OpenAIChallenge */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OpenAIChallenge; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEDA69B82979547F00767336 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		DEDBA674297F52100045A691 /* libcurl.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurl.tbd; path = usr/lib/libcurl.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEDBA675297F52100045A691 /* libcurl.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,6 +52,7 @@
 			children = (
 				DEDA69B72979547F00767336 /* src */,
 				DEDA69B62979547F00767336 /* Products */,
+				DEDBA673297F52100045A691 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +74,14 @@
 				DE01B756297976590093E294 /* openai_adapter.hpp */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		DEDBA673297F52100045A691 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DEDBA674297F52100045A691 /* libcurl.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,7 +152,6 @@
 		DEDA69BA2979547F00767336 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -170,14 +181,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -191,15 +196,12 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
 		DEDA69BB2979547F00767336 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -229,12 +231,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -244,7 +242,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = macosx;
 			};
 			name = Release;
 		};
