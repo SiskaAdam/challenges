@@ -41,27 +41,6 @@ private:
 };
 
 
-class CURLSession final {
-public:
-    CURLSession(void): session(curl_easy_init()) { }
-    CURLSession(const CURLSession&) = delete;
-    
-    ~CURLSession(void) {
-        if (session) {
-            curl_easy_cleanup(session);
-            session = nullptr;
-        }
-    }
-    
-    CURL* get(void) const {
-        return session;
-    }
-    
-private:
-    CURL* session;
-};
-
-
 std::unique_ptr<CURLGlobalLoader> CURLGlobalLoader::singleton_instance = nullptr;
 
 
@@ -115,8 +94,8 @@ static size_t receive_callback(void* contents, size_t size, size_t nmemb, void* 
 
 
 std::string OpenAIAdapter::post(const std::string& command, const std::string& data) const {
-    const CURLSession curl_session;
-    CURL* curl = curl_session.get();
+    const std::unique_ptr<CURL, void (*)(CURL*)> curl_raii_wrapper(curl_easy_init(), curl_easy_cleanup);
+    CURL* curl = curl_raii_wrapper.get();
     if (!curl) {
         throw std::runtime_error("Unable to initialise Curl.");
     }
