@@ -1,5 +1,6 @@
 // Standard Library includes
 #include <memory>
+#include <optional>
 #include <stdexcept>
 #include <string>
 
@@ -14,6 +15,7 @@ static const std::string OPEN_AI_URL = std::string("https://api.openai.com/");
 static const std::string OPEN_AI_CONTENT_TYPE = std::string("Content-Type: application/json");
 static const std::string OPEN_AI_AUTH_PREFIX = std::string("Authorization: Bearer ");
 static const std::string OPEN_AI_COMMAND_PREFIX = OPEN_AI_URL + "v1/";
+static const std::string OPEN_AI_COMMAND_COMPLETION = std::string("completions");
 
 
 class CURLGlobalLoader final {
@@ -70,6 +72,41 @@ OpenAIAdapter::OpenAIAdapter(const std::string& api_key): api_key(api_key) {
 OpenAIAdapter::~OpenAIAdapter(void) { /* Nothing to destroy */ }
 
 
+std::string OpenAIAdapter::completion(const std::string& model,
+                                      const std::optional<std::string>& prompt,
+                                      const std::optional<std::string>& suffix,
+                                      const std::optional<int>& max_tokens,
+                                      const std::optional<double>& temperature,
+                                      const std::optional<double>& top_p,
+                                      const std::optional<int>& n,
+                                      const std::optional<bool>& stream,
+                                      const std::optional<int>& logprobs,
+                                      const std::optional<bool>& echo,
+                                      const std::optional<std::string>& stop,
+                                      const std::optional<double>& presence_penalty,
+                                      const std::optional<double>& frequency_penalty,
+                                      const std::optional<int>& best_of,
+                                      const std::optional<std::string>& logit_bias,
+                                      const std::optional<std::string>& user) const {
+    // TODO: this could surely be implemented better. A JSON library should do the job.
+    std::string data = std::string("{\"model\": \"") + model + "\"";
+    if (prompt) {
+        data += ", \"prompt\": \"" + prompt.value() + "\"";
+    }
+    if (max_tokens) {
+        data += ", \"max_tokens\": " + std::to_string(max_tokens.value());
+    }
+    if (temperature) {
+        data += ", \"temperature\": " + std::to_string(temperature.value());
+    }
+    if (top_p) {
+        data += ", \"top_p\": " + std::to_string(top_p.value());
+    }
+    // TODO: am not going to add all options...
+    return post(OPEN_AI_COMMAND_COMPLETION, data + "}");
+}
+
+
 static size_t receive_callback(void* contents, size_t size, size_t nmemb, void* userp) {
     std::string* data_buffer = (std::string*)userp;
     (*data_buffer) += (const char*)contents;
@@ -77,7 +114,7 @@ static size_t receive_callback(void* contents, size_t size, size_t nmemb, void* 
 }
 
 
-std::string OpenAIAdapter::post(const std::string& command, const std::string& data) {
+std::string OpenAIAdapter::post(const std::string& command, const std::string& data) const {
     CURLSession curl_session;
     CURL* curl = curl_session.get();
     if (!curl) {
