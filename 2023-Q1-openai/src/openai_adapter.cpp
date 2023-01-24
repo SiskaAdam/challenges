@@ -53,7 +53,7 @@ public:
         }
     }
     
-    CURL* get(void) {
+    CURL* get(void) const {
         return session;
     }
     
@@ -115,7 +115,7 @@ static size_t receive_callback(void* contents, size_t size, size_t nmemb, void* 
 
 
 std::string OpenAIAdapter::post(const std::string& command, const std::string& data) const {
-    CURLSession curl_session;
+    const CURLSession curl_session;
     CURL* curl = curl_session.get();
     if (!curl) {
         throw std::runtime_error("Unable to initialise Curl.");
